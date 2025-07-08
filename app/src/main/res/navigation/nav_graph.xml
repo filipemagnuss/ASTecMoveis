@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listGamesFragment">
+
+    <fragment
+        android:id="@+id/listGamesFragment"
+        android:name="com.example.astecmoveis.ui.fragments.ListGamesFragment"
+        android:label="App Games"
+        tools:layout="@layout/fragment_list_games" >
+        <action
+            android:id="@+id/action_listMoviesFragment_to_detailsMovieFragment"
+            app:destination="@id/detailsGameFragment" />
+        <action
+            android:id="@+id/action_listMoviesFragment_to_formMovieFragment"
+            app:destination="@id/formMovieFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsGameFragment"
+        android:name="com.example.astecmoveis.ui.fragments.DetailsGameFragment"
+        android:label="Detalhes do Game" >
+        <action
+            android:id="@+id/action_detailsMovieFragment_to_listMoviesFragment"
+            app:destination="@id/listGamesFragment" />
+        <argument
+            android:name="game"
+            app:argType="com.example.astecmoveis.data.local.entities.GameEntity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/formMovieFragment"
+        android:name="com.example.astecmoveis.ui.fragments.FormGameFragment"
+        android:label="Adicionar Game" >
+        <action
+            android:id="@+id/action_formMovieFragment_to_listMoviesFragment"
+            app:destination="@id/listGamesFragment" />
+    </fragment>
+</navigation>
