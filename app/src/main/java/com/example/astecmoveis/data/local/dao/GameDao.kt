@@ -5,20 +5,27 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.example.astecmoveis.data.local.entities.GameEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GameDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(game: GameEntity)
+    suspend fun insertGame(game: GameEntity) // Renomeado de 'insert'
 
-    @Query("SELECT * FROM games")
+    @Query("SELECT * FROM games ORDER BY title ASC") // Adicionado ordenação
     fun getAllGames(): Flow<List<GameEntity>>
+
+    @Query("SELECT * FROM games WHERE id = :gameId") // Adicionado método
+    fun getGameById(gameId: Int): Flow<GameEntity?>
+
+    @Update // Adicionado método
+    suspend fun updateGame(game: GameEntity)
 
     @Query("UPDATE games SET isPlayed = :isPlayed WHERE id = :gameId")
     suspend fun updatePlayedStatus(gameId: Int, isPlayed: Boolean)
 
     @Delete
-    suspend fun delete(game: GameEntity)
+    suspend fun deleteGame(game: GameEntity) // Renomeado de 'delete'
 }

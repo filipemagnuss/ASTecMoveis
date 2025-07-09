@@ -1,8 +1,10 @@
+// app/build.gradle.kts
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.androidx.navigation.safe.args)
     alias(libs.plugins.ksp)
+    id("org.jetbrains.kotlin.plugin.parcelize") // <-- ADICIONE ESTA LINHA AQUI
 }
 
 android {

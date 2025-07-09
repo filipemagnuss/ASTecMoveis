@@ -1,4 +1,4 @@
-package com.example.astecmoveis.data.local.database
+package com.example.astecmoveis.data.local.database // Pacote corrigido
 
 import android.content.Context
 import androidx.room.Database

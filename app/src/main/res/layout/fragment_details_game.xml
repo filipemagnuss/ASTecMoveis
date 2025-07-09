@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"> <!-- ✅ Correção aqui -->
-
-    <data>
-        <!-- Pode incluir um GameEntity aqui depois -->
-    </data>
+    xmlns:app="http://schemas.android.com/apk/res-auto"> <data>
+</data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,8 +28,6 @@
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
-        <!-- Você pode adicionar mais campos conforme quiser -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

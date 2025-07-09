@@ -13,5 +13,11 @@ class GameRepository(private val localDataSource: GameLocalDataSource) {
     suspend fun deleteGame(game: GameEntity) = localDataSource.deleteGame(game)
 
     suspend fun togglePlayedStatus(gameId: Int, currentStatus: Boolean) =
-            localDataSource.checkPlayedGame(gameId, currentStatus)
+        localDataSource.checkPlayedGame(gameId, currentStatus)
+
+    // Adicionado método para obter um jogo por ID
+    fun getGameById(id: Int): Flow<GameEntity?> = localDataSource.getGameById(id)
+
+    // Adicionado método para atualizar um jogo
+    suspend fun updateGame(game: GameEntity) = localDataSource.updateGame(game)
 }
