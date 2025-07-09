@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"> <data>
-</data>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data></data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,6 +26,46 @@
             android:text="Gênero"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Descrição"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvGenre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tvDeveloper"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Desenvolvedor"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tvReleaseYear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ano de Lançamento"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvDeveloper"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nota"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvReleaseYear"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
