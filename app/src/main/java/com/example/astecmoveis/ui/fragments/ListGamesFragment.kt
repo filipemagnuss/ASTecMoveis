@@ -10,12 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.astecmoveis.R // Importe o R para acessar os IDs
+import com.example.astecmoveis.R
 import com.example.astecmoveis.databinding.FragmentListGamesBinding
 import com.example.astecmoveis.ui.adapter.GameAdapter
 import com.example.astecmoveis.ui.viewmodel.GameViewModel
-import com.example.astecmoveis.ui.viewmodel.GameViewModelFactory // Importe a Factory
-import kotlinx.coroutines.flow.collectLatest // Usar collectLatest para StateFlow
+import com.example.astecmoveis.ui.viewmodel.GameViewModelFactory
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class ListGamesFragment : Fragment() {
@@ -23,9 +23,8 @@ class ListGamesFragment : Fragment() {
     private var _binding: FragmentListGamesBinding? = null
     private val binding get() = _binding!!
 
-    // Usando uma Factory para injetar o repositório no ViewModel
     private val viewModel: GameViewModel by viewModels {
-        GameViewModelFactory(requireActivity().application) // Passa o Application para a Factory
+        GameViewModelFactory(requireActivity().application)
     }
     private lateinit var adapter: GameAdapter
 
@@ -42,23 +41,19 @@ class ListGamesFragment : Fragment() {
 
         setupRecyclerView()
 
-        // Coleta o StateFlow de jogos do ViewModel e submete à lista do adaptador
         lifecycleScope.launch {
-            viewModel.games.collectLatest { games -> // Usar collectLatest para StateFlow
+            viewModel.games.collectLatest { games ->
                 adapter.submitList(games)
             }
         }
 
-        // Observa mensagens do ViewModel (sucesso/erro)
         viewModel.message.observe(viewLifecycleOwner) { message ->
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
 
-        // Corrigido o ID do FAB
-        binding.fabAdd.setOnClickListener { // Era fabAddGame no código original
-            findNavController().navigate(
-                R.id.action_listGamesFragment_to_formGameFragment // Verifique o nav_graph para o ID correto
-            )
+        binding.fabAdd.setOnClickListener {
+            val action = ListGamesFragmentDirections.actionListGamesFragmentToFormGameFragment()
+            findNavController().navigate(action)
         }
     }
 
@@ -69,14 +64,19 @@ class ListGamesFragment : Fragment() {
                     .actionListGamesFragmentToDetailsGameFragment(game)
                 findNavController().navigate(action)
             },
-            onTogglePlayed = { game -> // Adicionado o callback para alternar status
+            onTogglePlayed = { game ->
                 viewModel.togglePlayedStatus(game.id, game.isPlayed)
             },
-            onDeleteClick = { game -> // Adicionado o callback para deletar
+            onDeleteClick = { game ->
                 viewModel.deleteGame(game)
+            },
+            onEditClick = { game -> // Navega para a edição
+                val action = ListGamesFragmentDirections
+                    .actionListGamesFragmentToFormGameFragment(game)
+                findNavController().navigate(action)
             }
         )
-        binding.rvGames.layoutManager = LinearLayoutManager(requireContext()) // Era recyclerGames
+        binding.rvGames.layoutManager = LinearLayoutManager(requireContext())
         binding.rvGames.adapter = adapter
     }
 

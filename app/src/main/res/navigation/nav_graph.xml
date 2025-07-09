@@ -23,8 +23,8 @@
         android:name="com.example.astecmoveis.ui.fragments.DetailsGameFragment"
         android:label="Detalhes do Game" >
         <action
-            android:id="@+id/action_detailsGameFragment_to_listGamesFragment"
-            app:destination="@id/listGamesFragment" />
+            android:id="@+id/action_detailsGameFragment_to_formGameFragment"
+            app:destination="@id/formGameFragment" />
         <argument
             android:name="game"
             app:argType="com.example.astecmoveis.data.local.entities.GameEntity" />
@@ -33,9 +33,16 @@
     <fragment
         android:id="@+id/formGameFragment"
         android:name="com.example.astecmoveis.ui.fragments.FormGameFragment"
-        android:label="Adicionar Game" >
+        android:label="Adicionar/Editar Jogo" >
         <action
             android:id="@+id/action_formGameFragment_to_listGamesFragment"
-            app:destination="@id/listGamesFragment" />
+            app:destination="@id/listGamesFragment"
+            app:popUpTo="@id/listGamesFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="game"
+            app:argType="com.example.astecmoveis.data.local.entities.GameEntity"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

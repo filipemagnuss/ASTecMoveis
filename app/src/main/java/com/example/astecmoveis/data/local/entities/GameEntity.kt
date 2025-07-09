@@ -17,5 +17,5 @@ data class GameEntity(
     val releaseYear: Int,
     val rating: Double,
     val isPlayed: Boolean = false,
-    val createdAt: String = System.currentTimeMillis().toString(),
+    val createdAt: String = System.currentTimeMillis().toString()
 ) : Parcelable

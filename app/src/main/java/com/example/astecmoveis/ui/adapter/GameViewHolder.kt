@@ -10,17 +10,16 @@ class GameViewHolder(
     private val binding: GameItemListBinding,
     private val onItemClick: (GameEntity) -> Unit,
     private val onTogglePlayed: (GameEntity) -> Unit,
-    private val onDeleteClick: (GameEntity) -> Unit
+    private val onDeleteClick: (GameEntity) -> Unit,
+    private val onEditClick: (GameEntity) -> Unit // Callback para edição
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(game: GameEntity) {
         binding.tvGameTitle.text = game.title
         binding.tvGameGenre.text = game.genre
 
-
         binding.cbPlayed.setOnCheckedChangeListener(null)
         binding.cbPlayed.isChecked = game.isPlayed
-
 
         binding.cbPlayed.setOnCheckedChangeListener { _, isChecked ->
             onTogglePlayed(game.copy(isPlayed = isChecked))
@@ -33,6 +32,10 @@ class GameViewHolder(
         binding.btnDelete.setOnClickListener {
             onDeleteClick(game)
         }
+
+        binding.btnEdit.setOnClickListener { // Listener para o botão de editar
+            onEditClick(game)
+        }
     }
 
     companion object {
@@ -40,11 +43,12 @@ class GameViewHolder(
             parent: ViewGroup,
             onItemClick: (GameEntity) -> Unit,
             onTogglePlayed: (GameEntity) -> Unit,
-            onDeleteClick: (GameEntity) -> Unit
+            onDeleteClick: (GameEntity) -> Unit,
+            onEditClick: (GameEntity) -> Unit // Passar o callback
         ): GameViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = GameItemListBinding.inflate(layoutInflater, parent, false)
-            return GameViewHolder(binding, onItemClick, onTogglePlayed, onDeleteClick)
+            return GameViewHolder(binding, onItemClick, onTogglePlayed, onDeleteClick, onEditClick)
         }
     }
 }
