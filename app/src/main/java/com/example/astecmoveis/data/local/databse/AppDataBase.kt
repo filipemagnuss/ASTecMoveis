@@ -1,4 +1,4 @@
-package com.example.astecmoveis.data.local.database // Pacote corrigido
+package com.example.astecmoveis.data.local.database
 
 import android.content.Context
 import androidx.room.Database
@@ -26,7 +26,9 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "game_database"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }

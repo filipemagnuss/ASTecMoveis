@@ -37,6 +37,11 @@ class DetailsGameFragment : Fragment() {
 
         binding.tvTitle.text = game.title
         binding.tvGenre.text = game.genre
+        binding.tvDescription.text = game.description
+        binding.tvDeveloper.text = game.developer
+        binding.tvReleaseYear.text = game.releaseYear.toString()
+        binding.tvRating.text = game.rating.toString()
+
     }
 
     override fun onDestroyView() {
