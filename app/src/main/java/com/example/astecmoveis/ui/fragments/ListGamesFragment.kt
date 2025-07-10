@@ -48,7 +48,12 @@ class ListGamesFragment : Fragment() {
         }
 
         viewModel.message.observe(viewLifecycleOwner) { message ->
-            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            // Apenas mostra a mensagem se ela não for nula
+            message?.let {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                // Avisa ao ViewModel que a mensagem ja foi exibida
+                viewModel.onMessageShown()
+            }
         }
 
         binding.fabAdd.setOnClickListener {
