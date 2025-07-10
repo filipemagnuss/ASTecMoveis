@@ -12,12 +12,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface GameDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertGame(game: GameEntity) // Renomeado de 'insert'
+    suspend fun insertGame(game: GameEntity)
 
-    @Query("SELECT * FROM games ORDER BY title ASC") // Adicionado ordenação
+    @Query("SELECT * FROM games ORDER BY title ASC")
     fun getAllGames(): Flow<List<GameEntity>>
 
-    @Query("SELECT * FROM games WHERE id = :gameId") // Adicionado método
+    @Query("SELECT * FROM games WHERE id = :gameId")
     fun getGameById(gameId: Int): Flow<GameEntity?>
 
     @Update // Adicionado método
@@ -27,5 +27,5 @@ interface GameDao {
     suspend fun updatePlayedStatus(gameId: Int, isPlayed: Boolean)
 
     @Delete
-    suspend fun deleteGame(game: GameEntity) // Renomeado de 'delete'
+    suspend fun deleteGame(game: GameEntity)
 }

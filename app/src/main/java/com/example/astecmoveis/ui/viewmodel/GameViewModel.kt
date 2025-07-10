@@ -23,7 +23,7 @@ class GameViewModel(private val repository: GameRepository) : ViewModel() {
     private val _currentGame = MutableLiveData<GameEntity?>()
     val currentGame: LiveData<GameEntity?> get() = _currentGame
 
-    // ✅ O LiveData agora segura uma String que pode ser nula
+    // O LiveData segura uma String que pode ser nula
     private val _message = MutableLiveData<String?>()
     val message: LiveData<String?> get() = _message
 
@@ -31,7 +31,7 @@ class GameViewModel(private val repository: GameRepository) : ViewModel() {
         loadAllGames()
     }
 
-    // ✅ Nova função para limpar a mensagem
+    // Função para limpar a mensagem
     fun onMessageShown() {
         _message.value = null
     }

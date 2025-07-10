@@ -75,7 +75,7 @@ class ListGamesFragment : Fragment() {
             onDeleteClick = { game ->
                 viewModel.deleteGame(game)
             },
-            onEditClick = { game -> // Navega para a edição
+            onEditClick = { game ->
                 val action = ListGamesFragmentDirections
                     .actionListGamesFragmentToFormGameFragment(game)
                 findNavController().navigate(action)

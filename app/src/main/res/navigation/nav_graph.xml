@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/listGamesFragment"
         android:name="com.example.astecmoveis.ui.fragments.ListGamesFragment"
-        android:label="App Games"
+        android:label="Agenda Gamer"
         tools:layout="@layout/fragment_list_games" >
         <action
             android:id="@+id/action_listGamesFragment_to_detailsGameFragment"

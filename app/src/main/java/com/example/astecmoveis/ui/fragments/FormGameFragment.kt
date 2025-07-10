@@ -53,7 +53,7 @@ class FormGameFragment : Fragment() {
     }
 
     private fun setupDropdowns() {
-        val genres = listOf("Ação", "Aventura", "RPG", "Estratégia", "Simulação", "Esportes")
+        val genres = listOf("Ação", "Aventura", "RPG", "Estratégia", "Simulação", "Esportes", "Corrida")
         val genreAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, genres)
         binding.actvGenre.setAdapter(genreAdapter)
 
