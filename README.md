@@ -1,4 +1,3 @@
-ASTecMoveis
 ASTecMoveis é um aplicativo para celular feito para você organizar sua coleção de jogos. Com ele, você pode adicionar novos jogos, ver os detalhes de cada um, fazer alterações, e até mesmo marcar se já jogou ou não.
 
 Funcionalidades Principais
